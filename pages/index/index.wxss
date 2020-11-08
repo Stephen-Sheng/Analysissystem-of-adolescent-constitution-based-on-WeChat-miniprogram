@@ -1,0 +1,7 @@
+/**index.wxss**/
+.window {
+  color: #973f3f;
+}
+.window-green {
+  color: #3abb61;
+}
