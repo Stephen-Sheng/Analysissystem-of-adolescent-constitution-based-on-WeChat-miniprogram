@@ -2,11 +2,39 @@
 
 Page({
   data: {
-    color: "window",
-    msg: "Hello, world!",
-    flag: true
+    // userInfo: "test"
+    list: [{
+      "text": "分析",
+      "iconPath": "/images/AnalysisImg.png",
+      "selectedIconPath": "/images/clickAnalysis.png",
+      // dot: true
+  },
+  {
+      "text": "个人中心",
+    "iconPath": "/images/centerImg.png",
+    "selectedIconPath": "/images/clickCenter.png",
+      // badge: 'New'
+  }],
+    showAnalysisDialog: false,
+    analysisDialogText: [{text: '确定'}]
   },
   //事件处理函数
+  tabChange (e) {
+    console.log('tab change',e);
+    wx.redirectTo({
+      url: '/pages/analysis/analysis',
+    })
+  },
+  clickAnalysis: function() {
+    this.setData({
+      showAnalysisDialog:true
+    })
+  },
+  tapAnalysisDialogButton: function() {
+    this.setData({
+      showAnalysisDialog: false
+    })
+  },
   onLaunch: function () {
     console.log('Page1 launch');
   },
@@ -21,29 +49,5 @@ Page({
   },
   onUnload: function() {
     console.log('Page1 Unload');
-  },
-  click: function() {
-    if(this.data.flag){
-      this.setData({
-        color: "window-green",
-        msg: "Hello, world!",
-        flag: false
-      })
-      
-    }
-    else{
-      this.setData({
-        color: "window",
-        msg: "Changed",
-        flag: true
-      })
-    }
-    wx.getLocation({
-      type: 'wgs84',
-      success: (res) => {
-        var latitude = res.latitude // 纬度
-        var longitude = res.longitude // 经度
-      }
-    })
   }
 })

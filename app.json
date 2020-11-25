@@ -1,14 +1,19 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/userLogin/userLogin",
+    "pages/analysis/analysis"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#BBDEF8",
-    "navigationBarTitleText": "Login",
-    "navigationBarTextStyle":"white"
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#01ccb6",
+    "navigationBarTitleText": "青少年体质分析系统",
+    "navigationBarTextStyle": "white"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "mp-tabbar": "/miniprogram_npm/weui-miniprogram/tabbar/tabbar"
+  },
+  "navigationBarTitleText": "UI组件库"
 }

@@ -1,4 +1,109 @@
 <!--index.wxml-->
-<view>
-  <text catchtap = "click" class = "{{color}}">{{msg}}</text>
+<!-- 上侧部分 -->
+<view class="top-view">
+  <!-- 用户信息开始 -->
+  <view class="user">
+    <!-- 头像开始 -->
+    <view class="row">
+      <!-- <image class="avatar" wx:if="{{userInfo}}" src="{{userInfo.avatarUrl}}" alt="welcome"></image> -->
+      <image class="avatar" wx:if="{{userInfo}}" src="../../images/avatar.png"></image>
+      <image class="avatar" wx:else="{{userInfo}}" src="../../images/avatar.png"></image>
+    </view>
+    <!-- 头像结束 -->
+
+    <!-- 用户名称开始 -->
+    <view class="name" wx:if="{{userInfo}}">
+      <!-- <view bindtap="onClickLogout">{{userInfo.nickName}}</view> -->
+      <view>{{userInfo}}</view>
+    </view>
+    <view class="non-name" wx:else="{{userInfo}}">
+      <navigator url="../userLogin/userLogin">登录</navigator>
+      |
+      <navigator url="../userLogin/userLogin">注册</navigator>
+    </view>
+    <!-- 用户名称结束 -->
+    <!-- 个人主页开始 -->
+    <!-- <view class="site">查看个人主页</view> -->
+    <!-- 个人主页结束 -->
+  </view>
+  <!-- 关注 粉丝 赞与收藏开始 -->
+  <view class="numbers">
+    <!-- <view class="row">
+        <text>0</text>
+        <text>关注</text>
+      </view> -->
+    <!-- <view class="row">
+        <text>0</text>
+        <text>粉丝</text>
+      </view> -->
+    <!-- <view class="row">
+        <text>0</text>
+        <text>赞与收藏</text>
+      </view>
+      <view class="row">
+        <text>0</text>
+        <text>好友动态</text>
+      </view> -->
+  </view>
+
+  <!-- 关注 粉丝 赞与收藏结束 -->
+  <!-- 用户信息结束 -->
+
 </view>
+
+<!-- 待支付开始 -->
+<view class="middle-view">
+  <view class="item" bindtap="clickAnalysis">
+    <!-- <image src="/static/images/icon/transaction_order1_icon_show.png"></image> -->
+    <mp-icon icon="note" color="black" size="{{30}}"></mp-icon>
+    <text>身体状况</text>
+    <mp-dialog title="提示" show="{{showAnalysisDialog}}" bindbuttontap="tapAnalysisDialogButton" buttons="{{analysisDialogText}}">
+        <view>请您登录后察看身体状况</view>
+    </mp-dialog>
+  </view>
+  <view class="item">
+    <mp-icon icon="add" color="black" size="{{30}}"></mp-icon>
+    <text>待开发</text>
+  </view>
+  <view class="item">
+    <mp-icon icon="add" color="black" size="{{30}}"></mp-icon>
+    <text>待开发</text>
+  </view>
+  <view class="item">
+    <mp-icon icon="add" color="black" size="{{30}}"></mp-icon>
+    <text>待开发</text>
+  </view>
+</view>
+<!-- 待支付结束 -->
+
+<!-- 钱包 优惠券 开始 -->
+<view class="function-view">
+  <view class="item">
+    <view class="left">我的钱包</view>
+    <view class="right">
+      <text>¥20</text>
+    </view>
+  </view>
+  <view class="item">
+    <view class="left">我的优惠券</view>
+    <view class="right">
+      <text>暂无可用</text>
+    </view>
+  </view>
+  <view class="item">
+    <view class="left">领劵中心</view>
+    <view class="right">
+      <text>你的福利都在这里</text>
+    </view>
+  </view>
+</view>
+<!-- 钱包 优惠券 结束 -->
+
+<!-- 官方微信客服开始 -->
+<view class="contact-view">
+  <button open-type="contact">
+    <mp-icon icon="email" color="black" size="{{25}}"></mp-icon>
+    <text class="contact-view">联系我们</text>
+  </button>
+</view>
+<mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange" current="1"></mp-tabbar>

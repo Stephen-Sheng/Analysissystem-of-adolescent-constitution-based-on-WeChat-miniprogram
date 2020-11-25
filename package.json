@@ -1,0 +1,22 @@
+{
+  "name": "analysissystem-of-adolescent-constitution-based-on-wechat-miniprogram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stephen-Sheng/Analysissystem-of-adolescent-constitution-based-on-WeChat-miniprogram.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stephen-Sheng/Analysissystem-of-adolescent-constitution-based-on-WeChat-miniprogram/issues"
+  },
+  "homepage": "https://github.com/Stephen-Sheng/Analysissystem-of-adolescent-constitution-based-on-WeChat-miniprogram#readme",
+  "dependencies": {
+    "weui-miniprogram": "^1.0.6"
+  }
+}
