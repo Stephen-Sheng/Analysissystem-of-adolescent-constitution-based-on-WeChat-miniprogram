@@ -64,6 +64,7 @@
 .logBtn{
   background-color: #01ccb6;
   color: white;
+  font-weight: 400;
   padding-left: 0rpx;
   padding-right: 30rpx;
   margin-left: 0rpx;
