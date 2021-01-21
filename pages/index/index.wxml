@@ -5,8 +5,7 @@
   <view class="user">
     <!-- 头像开始 -->
     <view class="row">
-      <!-- <image class="avatar" wx:if="{{userInfo}}" src="{{userInfo.avatarUrl}}" alt="welcome"></image> -->
-      <image class="avatar" wx:if="{{userInfo}}" src="../../images/avatar.png"></image>
+      <image class="avatar" wx:if="{{userInfo}}" src="{{userInfo.avatarUrl}}"></image>
       <image class="avatar" wx:else="{{userInfo}}" src="../../images/avatar.png"></image>
     </view>
     <!-- 头像结束 -->
@@ -14,12 +13,15 @@
     <!-- 用户名称开始 -->
     <view class="name" wx:if="{{userInfo}}">
       <!-- <view bindtap="onClickLogout">{{userInfo.nickName}}</view> -->
-      <view>{{userInfo}}</view>
+      <view>{{userInfo.nickName}}</view>
     </view>
     <view class="non-name" wx:else="{{userInfo}}">
-      <navigator url="../userLogin/userLogin">登录</navigator>
-      |
-      <navigator url="../userLogin/userLogin">注册</navigator>
+      <button
+      class= "logBtn" 
+      size="mini" 
+      open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"
+      bindtap="onLogin"
+      >点击登录</button>
     </view>
     <!-- 用户名称结束 -->
     <!-- 个人主页开始 -->
@@ -53,13 +55,17 @@
 
 <!-- 待支付开始 -->
 <view class="middle-view">
-  <view class="item" bindtap="clickAnalysis">
+  <view class="item"  wx:if="{{!userInfo}}" bindtap="clickAnalysis">
     <!-- <image src="/static/images/icon/transaction_order1_icon_show.png"></image> -->
     <mp-icon icon="note" color="black" size="{{30}}"></mp-icon>
     <text>身体状况</text>
     <mp-dialog title="提示" show="{{showAnalysisDialog}}" bindbuttontap="tapAnalysisDialogButton" buttons="{{analysisDialogText}}">
         <view>请您登录后察看身体状况</view>
     </mp-dialog>
+  </view>
+  <view class="item"  wx:else="{{userInfo}}" bindtap="inClickAnalysis">
+    <mp-icon icon="note" color="black" size="{{30}}"></mp-icon>
+    <text>身体状况</text>
   </view>
   <view class="item">
     <mp-icon icon="add" color="black" size="{{30}}"></mp-icon>

@@ -31,15 +31,13 @@
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true,
     "bundle": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.13.1",
-  "appid": "wx542d80517ae400e6",
+  "appid": "wx0147195f89598027",
   "projectname": "miniprogram1",
   "debugOptions": {
     "hidedInDevtools": []

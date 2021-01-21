@@ -1,5 +1,6 @@
 <!--pages/userLogin/userLogin.wxml-->
 <!--pages/auth/auth.wxml-->
+<meta name="referrer" content="never">
 <view class="logo">
   <image src='/images/avatar.png'></image>
   <!-- <text>Hello!</text> -->
@@ -12,12 +13,12 @@
   </view>
 
    <view class="row-group">
-    <text>验证码</text>
-    <input placeholder="请填写验证码" placeholder-class='txt' maxlength='4' value="{{code}}" bindinput="bindCodeInput" />
-    <view class="code" bindtap="onClickCheckCode">获取验证码</view>
+    <text>密码</text>
+    <input placeholder="请填写密码" placeholder-class='txt' type='password' maxlength='20' value="{{pwd}}" bindinput="bindPwdInput" />
   </view>
 
   <view>
-    <button class="submit"  open-type="getUserInfo" bindgetuserinfo="onClickSubmit">登录 | 注册</button>
+    <button class = "submit" bindtap="submitAcc">授权登录</button>
   </view>
 </view>
+</meta>
