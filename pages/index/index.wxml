@@ -5,17 +5,18 @@
   <view class="user">
     <!-- 头像开始 -->
     <view class="row">
-      <image class="avatar" wx:if="{{userInfo}}" src="{{userInfo.avatarUrl}}"></image>
+      <image class="avatar" wx:if="{{userInfo&&loginJud}}" src="{{userInfo.avatarUrl}}"></image>
       <image class="avatar" wx:else="{{userInfo}}" src="../../images/avatar.png"></image>
     </view>
     <!-- 头像结束 -->
 
     <!-- 用户名称开始 -->
-    <view class="name" wx:if="{{userInfo}}">
+    <view class="name" wx:if="{{userInfo&&loginJud}}">
       <!-- <view bindtap="onClickLogout">{{userInfo.nickName}}</view> -->
-      <view>{{userInfo.nickName}}</view>
+      <view class="nickName">{{userInfo.nickName}}</view>
+      
     </view>
-    <view class="non-name" wx:else="{{userInfo}}">
+    <view class="non-name" wx:else="{{userInfo&&loginJud}}">
       <button
       class= "logBtn" 
       size="mini" 
@@ -27,6 +28,12 @@
     <!-- 个人主页开始 -->
     <!-- <view class="site">查看个人主页</view> -->
     <!-- 个人主页结束 -->
+    <button
+      wx:if="{{userInfo&&loginJud}}"
+      class= "quitBtn"
+      size="mini"
+      bindtap="onClickLogout"
+      >[退出登录]</button>
   </view>
   <!-- 关注 粉丝 赞与收藏开始 -->
   <view class="numbers">

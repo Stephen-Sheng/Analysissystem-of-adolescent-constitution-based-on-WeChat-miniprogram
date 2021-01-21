@@ -54,11 +54,31 @@
   flex-direction: column;
   align-items: center;
 }
+.nickName{
+  position: relative;
+  padding-top: 0px;
+  top:0px;
+  width: 200px !important;
+  height: 10px,
+}
 .logBtn{
   background-color: #01ccb6;
   color: white;
   padding-left: 0rpx;
+  padding-right: 30rpx;
   margin-left: 0rpx;
+}
+.quitBtn{
+  position: relative;
+  background-color: #01ccb6;
+  color: white;
+  top:0px;
+  padding: 0 !important;
+  margin: 0 !important;
+  right: 50px;
+  font-weight: 300;
+  font-size: 12px !important;
+  width: 60px !important;
 }
 .middle-view{
   padding: 40rpx;

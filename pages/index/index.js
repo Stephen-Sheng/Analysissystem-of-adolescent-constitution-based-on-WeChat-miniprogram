@@ -3,6 +3,7 @@
 Page({
   data: {
     userInfo: wx.getStorageSync('userInfo'),
+    loginJud: wx.getStorageSync('loginJud'),
     // Tabbar
     list: [{
       "text": "分析",
@@ -18,10 +19,6 @@ Page({
   }],
     showAnalysisDialog: false,
     analysisDialogText: [{text: '确定'}],
-    // 下拉菜单
-    selectShow: false,//控制下拉列表的显示隐藏，false隐藏、true显示
-    selectData: ['15:10','15:15','15:20'],//下拉列表的数据
-    index: 0
   },
   //事件处理函数
   tabChange (e) {
@@ -50,24 +47,17 @@ Page({
       url: '../userLogin/userLogin',
     })
   },
-  selectTap() {
+  onClickLogout: function() {
+    wx.removeStorageSync('userInfo');
     this.setData({
-      selectShow: !this.data.selectShow
-    });
+      userInfo: '',
+      loginJud: false,
+    })
+    wx.redirectTo({
+      url: '../userLogin/userLogin',
+    })
+
   },
-  optionTap(e) {
-    let Index = e.currentTarget.dataset.index;//获取点击的下拉列表的下标
-    this.setData({
-      index: Index,
-      selectShow: !this.data.selectShow
-    });
-  },
-  onLaunch: function () {
-    
-  },
-  // onShow: function() {
-  //   console.log('Page1 Show');
-  // },
   onReady: function() {
     var loginJud = wx.getStorageSync('loginJud');
     var userStorage = wx.getStorageSync('userInfo');
@@ -77,11 +67,4 @@ Page({
       })
     }
   },
-  // onHide: function() {
-  //   console.log('Page1 Hide');
-  // },
-  onUnload: function() {
-    console.log('Page1 Unload');
-    
-  }
 })
