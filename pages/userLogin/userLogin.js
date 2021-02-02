@@ -1,4 +1,6 @@
 // pages/userLogin/userLogin.js
+import lmd5 from '../../utils/MD5'
+
 Page({
 
   /**
@@ -10,7 +12,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     loginInfo:'',
     loginJud: false,
-    code:''
+    code:'',
+    token:'',
 
   },
 
@@ -31,6 +34,10 @@ Page({
   },
   submitAcc: function () {
     var that = this;
+    var pwd_copy = that.data.pwd;
+    that.setData({
+      pwd: lmd5.hex_md5(pwd_copy)
+    })
     if(that.data.phoneNum.length ==0 || that.data.pwd.length ==0){//校验非空
       wx.showToast({  //弹框提示
         icon: 'none',
@@ -38,21 +45,28 @@ Page({
         duration: 2000,
       })
     }else {
+      var timestamp = Math.round(new Date().getTime()/1000);
+      console.log(timestamp);
+      console.log(lmd5.hex_md5(that.data.pwd + timestamp));
       wx.request({  //向后台发送请求
-        url: 'https://www.stephensheng.cn:8764/login',
-        method: "get",
-        header: { 'content-type': 'application/json' },
+        url: 'https://www.sunshineforce.com/app/tourist/login',
+        method: "POST",
         data: {
-          phoneNum: this.data.phoneNum, //this.data.phoneNum 代表你data中phoneNum的值
-          pwd: this.data.pwd,
+          phone: that.data.phoneNum, //this.data.phoneNum 代表你data中phoneNum的值
+          password: lmd5.hex_md5(that.data.pwd + timestamp),
+          times: timestamp
         },
-        success: function (res) { //res为后台返回给前端的数据
+        success: function (res) {
+           //res为后台返回给前端的数据
+          console.log(res);
+          console.log(that.data.token);
           that.setData({
-            loginInfo: res.data.data.info,
-            code: res.data.code,
-               
+            loginInfo: res.data.sta 
           })
-          if(that.data.code == 200){ //如果返回的code为200，代表用户名密码验证成功
+          if(that.data.loginInfo == 200){ //如果返回的code为200，代表用户名密码验证成功
+            that.setData({
+              token: res.data.data.token,  
+            })
             wx.showToast({
               title: '登录成功',
             })
@@ -91,6 +105,9 @@ Page({
               }
             })
           }else{
+            that.setData({
+              pwd: ''
+            })
             wx.showToast({
               icon: 'none',
               title: '用户名或密码错误',
