@@ -1,5 +1,5 @@
 <!--pages/analysis/analysis.wxml-->
 <!-- <text>pages/analysis/analysis.wxml</text> -->
 <view>
-<web-view src= "{{this.data.finalURL}}" binderror="failHandler"></web-view>
+<web-view src= "{{finalURL}}" binderror="failHandler"></web-view>
 </view>
