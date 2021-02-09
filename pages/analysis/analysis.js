@@ -16,7 +16,7 @@ Page({
   onLoad: function (options) {
     var token = wx.getStorageSync('userToken');
     console.log("token in storage is: "+token);
-    var uri = encodeURIComponent(this.data.baseURL + token)
+    var uri = this.data.baseURL + token;
     this.setData({
       finalURL: uri
     })
