@@ -24,10 +24,6 @@
       bindtap="onLogin"
       >点击登录</button>
     </view>
-    <!-- 用户名称结束 -->
-    <!-- 个人主页开始 -->
-    <!-- <view class="site">查看个人主页</view> -->
-    <!-- 个人主页结束 -->
     <button
       wx:if="{{userInfo&&loginJud}}"
       class= "quitBtn"

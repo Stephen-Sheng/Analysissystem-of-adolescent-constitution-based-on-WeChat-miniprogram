@@ -53,9 +53,9 @@ Page({
       userInfo: '',
       loginJud: false,
     })
-    wx.redirectTo({
-      url: '../userLogin/userLogin',
-    })
+    // wx.redirectTo({
+    //   url: '../userLogin/userLogin',
+    // })
 
   },
   onReady: function() {

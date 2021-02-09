@@ -46,8 +46,6 @@ Page({
       })
     }else {
       var timestamp = Math.round(new Date().getTime()/1000);
-      console.log(timestamp);
-      console.log(lmd5.hex_md5(that.data.pwd + timestamp));
       wx.request({  //向后台发送请求
         url: 'https://www.sunshineforce.com/app/tourist/login',
         method: "POST",
@@ -58,8 +56,6 @@ Page({
         },
         success: function (res) {
            //res为后台返回给前端的数据
-          console.log(res);
-          console.log(that.data.token);
           that.setData({
             loginInfo: res.data.sta 
           })
@@ -67,6 +63,8 @@ Page({
             that.setData({
               token: res.data.data.token,  
             })
+            wx.setStorageSync('userToken', that.data.token);
+            console.log(that.data.token);
             wx.showToast({
               title: '登录成功',
             })
