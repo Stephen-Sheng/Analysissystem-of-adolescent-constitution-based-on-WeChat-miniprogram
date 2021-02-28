@@ -1,0 +1,28 @@
+/* pages/advertise.wxss */
+.lb_swiper{
+  padding: 1%;
+  padding-bottom: 0%;
+}
+
+
+.lb_swiper .wx-swiper-dot{
+  width: 8rpx;
+  height: 8rpx;
+}
+.lb_swiper .wx-swiper-dot-active{
+  width: 26rpx;
+  border-radius:10rpx;
+  background: rgba(87, 247, 225, 0.801);
+}
+
+ 
+.slide-image{
+  width:100%;
+  height:90%;
+  transform: scale(0.6,0.6);
+  border-radius:10rpx;
+  overflow: hidden;
+}
+.slide-active{
+  transform: scale(1,1);
+}

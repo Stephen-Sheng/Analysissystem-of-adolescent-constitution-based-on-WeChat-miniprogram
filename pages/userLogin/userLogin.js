@@ -9,6 +9,7 @@ Page({
   data: {
     phoneNum:'',
     pwd:'',
+    md5_pwd:'',
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     loginInfo:'',
     loginJud: false,
@@ -36,7 +37,7 @@ Page({
     var that = this;
     var pwd_copy = that.data.pwd;
     that.setData({
-      pwd: lmd5.hex_md5(pwd_copy)
+      md5_pwd: lmd5.hex_md5(pwd_copy)
     })
     if(that.data.phoneNum.length ==0 || that.data.pwd.length ==0){//校验非空
       wx.showToast({  //弹框提示
@@ -51,7 +52,7 @@ Page({
         method: "POST",
         data: {
           phone: that.data.phoneNum, //this.data.phoneNum 代表你data中phoneNum的值
-          password: lmd5.hex_md5(that.data.pwd + timestamp),
+          password: lmd5.hex_md5(that.data.md5_pwd + timestamp),
           times: timestamp
         },
         success: function (res) {

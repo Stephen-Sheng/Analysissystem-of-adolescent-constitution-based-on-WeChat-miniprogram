@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/userLogin/userLogin",
-    "pages/analysis/analysis"
+    "pages/analysis/analysis",
+    "pages/advertise/advertise"
   ],
   "window": {
     "backgroundTextStyle": "light",

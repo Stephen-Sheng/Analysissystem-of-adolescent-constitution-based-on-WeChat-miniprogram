@@ -1,0 +1,14 @@
+<!--pages/advertise.wxml-->
+<view>
+  <view class="lb_swiper">
+    <swiper style='height:{{Hei}};position:relative' indicator-dots="true" circular="true"
+     current="{{bannerCurrent}}" bindchange="bannerChange"
+      autoplay="true" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <image mode="aspectFill" bindload='imgH' src="{{item.url}}" class="slide-image {{bannerCurrent==index?'slide-active':''}}" style="transition: all 1s"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>

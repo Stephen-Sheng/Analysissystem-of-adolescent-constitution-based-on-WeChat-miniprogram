@@ -24,7 +24,7 @@ Page({
   tabChange (e) {
     console.log('tab change',e);
     wx.redirectTo({
-      url: '/pages/analysis/analysis',
+      url: '/pages/advertise/advertise',
     })
   },
   clickAnalysis: function() {
