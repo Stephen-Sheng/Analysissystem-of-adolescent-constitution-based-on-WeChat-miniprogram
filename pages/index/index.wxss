@@ -110,6 +110,19 @@
   height: 50rpx;
   margin-bottom: 20rpx;
 }
+.middle-view .item1{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  right: 400rpx;
+  bottom: 3rpx;
+  align-items: center;
+}
+.middle-view .item1 image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-bottom: 20rpx;
+}
 /* 待支付 样式 结束*/
 /*  钱包 优惠券 开始  */
 .function-view{

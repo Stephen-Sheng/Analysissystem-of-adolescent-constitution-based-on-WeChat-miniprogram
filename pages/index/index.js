@@ -4,9 +4,10 @@ Page({
   data: {
     userInfo: wx.getStorageSync('userInfo'),
     loginJud: wx.getStorageSync('loginJud'),
+    credits: '',
     // Tabbar
     list: [{
-      "text": "分析",
+      "text": "首页",
       "iconPath": "/images/AnalysisImg.png",
       "selectedIconPath": "/images/clickAnalysis.png",
       // dot: true
@@ -57,6 +58,16 @@ Page({
     //   url: '../userLogin/userLogin',
     // })
 
+  },
+  tapFavorite: function() {
+    wx.redirectTo({
+      url: '../favorite/favorite',
+    })
+  },
+  tapCredits: function() {
+    wx.redirectTo({
+      url: '../credits/credits',
+    })
   },
   onReady: function() {
     var loginJud = wx.getStorageSync('loginJud');

@@ -9,7 +9,17 @@ Page({
     interval: 4000,
     duration: 1000,
     bannerCurrent: 0,
-    Hei:"200"    
+    Hei:"200",
+    list: [{
+      "text": "首页",
+      "iconPath": "/images/AnalysisImg.png",
+      "selectedIconPath": "/images/clickAnalysis.png",
+  },
+  {
+      "text": "个人中心",
+      "iconPath": "/images/centerImg.png",
+      "selectedIconPath": "/images/clickCenter.png"
+  }]    
   },
   
 //轮播current切换监听事件
@@ -41,5 +51,11 @@ bannerChange: function(e){
     this.setData({
       duration: e.detail.value
     })
-  }
+  },
+  tabChange (e) {
+    console.log('tab change',e);
+    wx.redirectTo({
+      url: '/pages/index/index',
+    })
+  },
 })

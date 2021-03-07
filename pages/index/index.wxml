@@ -12,9 +12,7 @@
 
     <!-- 用户名称开始 -->
     <view class="name" wx:if="{{userInfo&&loginJud}}">
-      <!-- <view bindtap="onClickLogout">{{userInfo.nickName}}</view> -->
-      <view class="nickName">{{userInfo.nickName}}</view>
-      
+      <view class="nickName">{{userInfo.nickName}}</view>  
     </view>
     <view class="non-name" wx:else="{{userInfo&&loginJud}}">
       <button
@@ -31,67 +29,35 @@
       bindtap="onClickLogout"
       >[退出登录]</button>
   </view>
-  <!-- 关注 粉丝 赞与收藏开始 -->
-  <view class="numbers">
-    <!-- <view class="row">
-        <text>0</text>
-        <text>关注</text>
-      </view> -->
-    <!-- <view class="row">
-        <text>0</text>
-        <text>粉丝</text>
-      </view> -->
-    <!-- <view class="row">
-        <text>0</text>
-        <text>赞与收藏</text>
-      </view>
-      <view class="row">
-        <text>0</text>
-        <text>好友动态</text>
-      </view> -->
-  </view>
-
-  <!-- 关注 粉丝 赞与收藏结束 -->
-  <!-- 用户信息结束 -->
-
 </view>
 
 <!-- 待支付开始 -->
 <view class="middle-view">
   <view class="item"  wx:if="{{!userInfo}}" bindtap="clickAnalysis">
     <!-- <image src="/static/images/icon/transaction_order1_icon_show.png"></image> -->
-    <mp-icon icon="note" color="black" size="{{30}}"></mp-icon>
+    <mp-icon icon="eyes-on" color="black" size="{{30}}"></mp-icon>
     <text>身体状况</text>
     <mp-dialog title="提示" show="{{showAnalysisDialog}}" bindbuttontap="tapAnalysisDialogButton" buttons="{{analysisDialogText}}">
         <view>请您登录后察看身体状况</view>
     </mp-dialog>
   </view>
-  <view class="item"  wx:else="{{userInfo}}" bindtap="inClickAnalysis">
-    <mp-icon icon="note" color="black" size="{{30}}"></mp-icon>
+  <view class="item"  wx:else="{{!userInfo}}" bindtap="inClickAnalysis">
+    <mp-icon icon="eyes-on" color="black" size="{{30}}"></mp-icon>
     <text>身体状况</text>
   </view>
-  <view class="item">
-    <mp-icon icon="add" color="black" size="{{30}}"></mp-icon>
-    <text>待开发</text>
-  </view>
-  <view class="item">
-    <mp-icon icon="add" color="black" size="{{30}}"></mp-icon>
-    <text>待开发</text>
-  </view>
-  <view class="item">
-    <mp-icon icon="add" color="black" size="{{30}}"></mp-icon>
-    <text>待开发</text>
+  <view class="item1">
+    <mp-icon icon="note" color="black" size="{{31}}"></mp-icon>
+    <text>推荐阅读</text>
   </view>
 </view>
-<!-- 待支付结束 -->
 
-<!-- 钱包 优惠券 开始 -->
-<view class="function-view">
+<!-- 未登录 -->
+<view class="function-view" wx:if="{{!userInfo}}" bindtap="clickAnalysis">
+  <mp-dialog title="提示" show="{{showAnalysisDialog}}" bindbuttontap="tapAnalysisDialogButton" buttons="{{analysisDialogText}}">
+        <view>请您登录后察看积分、优惠券及收藏</view>
+    </mp-dialog>
   <view class="item">
-    <view class="left">我的钱包</view>
-    <view class="right">
-      <text>¥20</text>
-    </view>
+    <view class="left">我的积分</view>
   </view>
   <view class="item">
     <view class="left">我的优惠券</view>
@@ -100,9 +66,27 @@
     </view>
   </view>
   <view class="item">
-    <view class="left">领劵中心</view>
+    <view class="left">我的收藏</view>
     <view class="right">
-      <text>你的福利都在这里</text>
+      <text></text>
+    </view>
+  </view>
+</view>
+<!-- 已登录 -->
+<view class="function-view" wx:else="{{!userInfo}}">
+  <view class="item" bindtap="tapCredits">
+    <view class="left">我的积分</view>
+  </view>
+  <view class="item">
+    <view class="left">我的优惠券</view>
+    <view class="right">
+      <text>暂无可用</text>
+    </view>
+  </view>
+  <view class="item" bindtap="tapFavorite">
+    <view class="left">我的收藏</view>
+    <view class="right">
+      <text></text>
     </view>
   </view>
 </view>

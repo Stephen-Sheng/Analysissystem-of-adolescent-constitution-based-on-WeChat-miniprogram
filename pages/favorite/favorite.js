@@ -1,12 +1,10 @@
-// pages/analysis/analysis.js
+// pages/favorite.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    baseURL: "https://www.sunshineforce.com/app/webpage/grow?token=",
-    finalURL: ''
 
   },
 
@@ -14,21 +12,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var token = wx.getStorageSync('userToken');
-    console.log("token is :"+token);
-    var uri = this.data.baseURL + token;
-    this.setData({
-      finalURL: uri
-    })
-  },
-  failHandler: function (e) {
-    console.log(e);
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+
   },
 
   /**

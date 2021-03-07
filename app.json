@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/userLogin/userLogin",
     "pages/analysis/analysis",
-    "pages/advertise/advertise"
+    "pages/advertise/advertise",
+    "pages/favorite/favorite",
+    "pages/credits/credits"
   ],
   "window": {
     "backgroundTextStyle": "light",
