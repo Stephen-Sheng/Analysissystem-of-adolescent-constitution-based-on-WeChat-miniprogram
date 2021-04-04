@@ -30,9 +30,6 @@ Page({
       pwd:value,//改变page--data中phoneNum的值
     })
   },
-  bindGetUserInfo (e) {
-    console.log(e.detail.userInfo)
-  },
   submitAcc: function () {
     var that = this;
     var pwd_copy = that.data.pwd;
@@ -57,14 +54,15 @@ Page({
         },
         success: function (res) {
            //res为后台返回给前端的数据
+          var resData = res.data
           that.setData({
-            loginInfo: res.data.sta 
+            loginInfo: resData.sta 
           })
-          if(that.data.loginInfo == 200){ //如果返回的code为200，代表用户名密码验证成功
+          if(that.data.loginInfo === 200){ //如果返回的code为200，代表用户名密码验证成功
             that.setData({
-              token: res.data.data.token,  
+              token: resData.data.token,  
             })
-            wx.setStorageSync('userToken', that.data.token);
+            
             console.log(that.data.token);
             wx.showToast({
               title: '登录成功',
@@ -72,37 +70,19 @@ Page({
             that.setData({
               loginJud: true 
             })
-            wx.setStorageSync('loginJud', that.data.loginJud); //保存userId至本地，以便随时调用
-            wx.getSetting({
-              success:(res) => {
-                // 判断用户权限
-                if (res.authSetting['scope.userInfo'] == undefined)
-                {
-                  // 如果未开启权限
-                  wx.authorize({
-                    scope: 'scope.userInfo',
-                    success:() => {
-                      // 用户点击确定后执行此处代码。跳转页面
-                      wx.redirectTo({
-                        url: '../index/index',
-                      })
-                    }
-                  })
-                }
-                // 若用户已开启权限，直接跳转页面。
-                else
-                {
-                  wx.getUserInfo({
-                    success: function(res){
-                      wx.setStorageSync('userInfo', res.userInfo);
-                      wx.redirectTo({
-                        url: '../index/index',
-                      })
-                    }
-                  });
-                }
-              }
+            wx.setStorage({
+              data: that.data.token,
+              key: 'userToken',
+            });
+            wx.setStorage({
+              data: that.data.loginJud,
+              key: 'loginJud'
+            });
+            that.getUserInfo(that.data.token);
+            wx.redirectTo({
+              url: '../index/index',
             })
+
           }else{
             that.setData({
               pwd: ''
@@ -117,4 +97,18 @@ Page({
       })
     }
   },
+  getUserInfo: function(token){
+    wx.request({
+      url: 'https://www.sunshineforce.com/app/user/info',
+      method: 'POST',
+      data:{token},
+      success: function(res){
+        var resData = res.data;
+        wx.setStorage({
+          data: resData.data,
+          key: 'userInfo',
+        })
+      }
+    })
+  }
 })

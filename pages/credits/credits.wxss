@@ -1,1 +1,27 @@
 /* pages/credits/credits.wxss */
+
+.top-view{
+  background-color: #01ccb6;
+  color: white;
+  padding: 40rpx;
+}
+.top-view .user{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.middle-view{
+  background-color: white;
+}
+.list-item{
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(228, 228, 213);
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  padding-top: 30rpx;
+  padding-left: 20rpx;
+  padding-bottom: 30rpx;
+  color: grey;
+}
+

@@ -2,9 +2,10 @@
 
 Page({
   data: {
-    userInfo: wx.getStorageSync('userInfo'),
-    loginJud: wx.getStorageSync('loginJud'),
+    userInfo: '',
+    loginJud: '',
     credits: '',
+    creditList: [],
     // Tabbar
     list: [{
       "text": "首页",
@@ -49,7 +50,12 @@ Page({
     })
   },
   onClickLogout: function() {
-    wx.removeStorageSync('userInfo');
+    wx.removeStorage({key:'userInfo'});
+
+    wx.setStorage({
+      data: false,
+      key: 'loginJud',
+    })
     this.setData({
       userInfo: '',
       loginJud: false,
@@ -69,13 +75,39 @@ Page({
       url: '../credits/credits',
     })
   },
+  onLoad: function() {
+    var token = wx.getStorageSync('userToken');
+    var that = this;
+    console.log('token', token);
+    wx.request({
+      url: 'https://www.sunshineforce.com/app/user/jifen',
+      method: "POST",
+      data: {token},
+      success: function(res){
+        that.setData({
+          credits: res.data.data.jifen,
+          creditList: res.data.data.list
+        })
+        wx.setStorage({
+          data: that.data.credits,
+          key: 'credits',
+        })
+        wx.setStorage({
+          data: that.data.creditList,
+          key: 'creditList',
+        })
+      }
+    })
+  },
   onReady: function() {
     var loginJud = wx.getStorageSync('loginJud');
-    var userStorage = wx.getStorageSync('userInfo');
-    if(userStorage && loginJud ){
+    var userInfo = wx.getStorageSync('userInfo');
+    if(userInfo && loginJud ){
       this.setData({
-        userInfo: userStorage
+        userInfo,
+        loginJud,
       })
     }
+    
   },
 })

@@ -1,2 +1,18 @@
-<!--pages/credits/credits.wxml-->
-<text>pages/credits/credits.wxml</text>
+<!--index.wxml-->
+<!-- 上侧部分 -->
+<view class="top-view">
+  <view class="user">
+    <view class="row">
+    </view>
+    <view class="credits">尊敬的{{user}}，您的积分为：{{credits}}</view>
+  </view>
+</view>
+<view class="middle-view">
+  <view class="list">
+    <view class="list-item" wx:for="{{creditList}}">
+      {{item.title}}{{item.score}}
+    </view>
+  </view>
+</view>
+
+

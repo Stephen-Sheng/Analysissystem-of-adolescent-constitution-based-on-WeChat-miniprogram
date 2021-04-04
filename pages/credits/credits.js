@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    credits:'',
+    creditList:'',
+    user: ''
   },
 
   /**
@@ -19,6 +21,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    var credits = wx.getStorageSync('credits');
+    var creditList = wx.getStorageSync('creditList');
+    var user = wx.getStorageSync('userInfo').name;
+    this.setData({
+      credits,
+      creditList,
+      user
+    })
 
   },
 

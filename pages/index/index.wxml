@@ -5,14 +5,14 @@
   <view class="user">
     <!-- 头像开始 -->
     <view class="row">
-      <image class="avatar" wx:if="{{userInfo&&loginJud}}" src="{{userInfo.avatarUrl}}"></image>
-      <image class="avatar" wx:else="{{userInfo}}" src="../../images/avatar.png"></image>
+      <image class="avatar" wx:if="{{userInfo&&loginJud}}" src="https://www.sunshineforce.com{{userInfo.touxiang}}"></image>
+      <image class="avatar" wx:else="{{userInfo&&loginJud}}" src="../../images/avatar.png"></image>
     </view>
     <!-- 头像结束 -->
 
     <!-- 用户名称开始 -->
     <view class="name" wx:if="{{userInfo&&loginJud}}">
-      <view class="nickName">{{userInfo.nickName}}</view>  
+      <view class="nickName">{{userInfo.name}}</view>  
     </view>
     <view class="non-name" wx:else="{{userInfo&&loginJud}}">
       <button
@@ -76,6 +76,7 @@
 <view class="function-view" wx:else="{{!userInfo}}">
   <view class="item" bindtap="tapCredits">
     <view class="left">我的积分</view>
+    <text>{{credits}}</text>
   </view>
   <view class="item">
     <view class="left">我的优惠券</view>
