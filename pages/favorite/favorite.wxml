@@ -1,2 +1,23 @@
-<!--pages/favorite.wxml-->
-<text>pages/favorite.wxml</text>
+<!--index.wxml-->
+<!-- 上侧部分 -->
+<view class="top-view">
+  <view class="user">
+    <view class="row">
+    </view>
+    <view class="credits">尊敬的{{user}}，您目前收藏的文章数为：{{favLength}}</view>
+  </view>
+</view>
+<view class="middle-view">
+  <view class="list">
+    <view class="list-noitem" wx:if="{{favLength !== 0}}">
+      <view class="list-item" wx:for="{{favoriteList}}">
+        {{item.title}}
+      </view>
+    </view>
+    <view class="list-noitem" wx:else="{{favLength === 0}}">
+    </view>
+    
+  </view>
+</view>
+
+

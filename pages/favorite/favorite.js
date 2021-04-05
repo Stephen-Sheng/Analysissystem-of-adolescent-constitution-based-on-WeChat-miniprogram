@@ -5,6 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    user: '',
+    favList: [],
+    favLength: 0
 
   },
 
@@ -12,14 +15,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var token = wx.getStorageSync('userToken');
+    var that = this;
+    wx.request({
+      url: 'https://www.sunshineforce.com/app/user/shoucang',
+      method: "POST",
+      data:{token},
+      success: function(res){
+        var resData = res.data;
+        if(resData.sta === 200){
+          that.setData({
+            favList: resData.data,
+            favLength: resData.data.length
+          })
+        }
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    var user = wx.getStorageSync('userInfo').name;
+    this.setData({user});
   },
 
   /**

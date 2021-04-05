@@ -1,1 +1,38 @@
 /* pages/favorite.wxss */
+.top-view{
+  background-color: #01ccb6;
+  color: white;
+  padding: 40rpx;
+}
+.top-view .user{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.middle-view{
+  background-color: white;
+}
+.list-item{
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(228, 228, 213);
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  padding-top: 30rpx;
+  padding-left: 20rpx;
+  padding-bottom: 30rpx;
+  color: grey;
+}
+.list-noitem{
+  background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsecretkeycrm.digifilm.com.cn%2Fupload%2F20180530%2Fe676f667c4cdfc7e074898adab2622f2.jpg&refer=http%3A%2F%2Fsecretkeycrm.digifilm.com.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620200489&t=4d8b8cb3b496d8c71cfb94fa292e22b8);
+  background-repeat: round;
+  width: 414px;
+  height: 320px;
+}
+
+/* image{
+  display: block;
+  position: absolute;
+  margin: auto;
+  opacity: 0.5;
+} */
