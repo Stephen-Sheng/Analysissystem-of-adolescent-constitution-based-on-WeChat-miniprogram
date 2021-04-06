@@ -75,6 +75,11 @@ Page({
       url: '../credits/credits',
     })
   },
+  tapSport: function() {
+    wx.redirectTo({
+      url: '../sport/sport',
+    })
+  },
   onLoad: function() {
     var token = wx.getStorageSync('userToken');
     var that = this;

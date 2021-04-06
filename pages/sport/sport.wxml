@@ -1,0 +1,6 @@
+<!--pages/sport/sport.wxml-->
+<calendar
+currentYear='2021'
+	currentMonth="4"
+	bindsendObj='getCalendarData'
+></calendar>

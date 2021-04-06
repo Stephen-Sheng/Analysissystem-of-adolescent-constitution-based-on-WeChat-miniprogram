@@ -60,7 +60,7 @@
     <view class="left">我的积分</view>
   </view>
   <view class="item">
-    <view class="left">我的优惠券</view>
+    <view class="left">我的运动日历</view>
     <view class="right">
       <text>暂无可用</text>
     </view>
@@ -79,7 +79,7 @@
     <text>{{credits}}</text>
   </view>
   <view class="item">
-    <view class="left">我的优惠券</view>
+    <view class="left" bindtap="tapSport">我的运动日历</view>
     <view class="right">
       <text>暂无可用</text>
     </view>

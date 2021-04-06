@@ -5,7 +5,8 @@
     "pages/analysis/analysis",
     "pages/advertise/advertise",
     "pages/favorite/favorite",
-    "pages/credits/credits"
+    "pages/credits/credits",
+    "pages/sport/sport"
   ],
   "window": {
     "backgroundTextStyle": "light",
