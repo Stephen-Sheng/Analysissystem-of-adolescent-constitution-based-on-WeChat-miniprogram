@@ -14,7 +14,7 @@
 		<view>六</view>
 		<view 
 			wx:for="{{allArr}}" 
-			wx:key="{{index}}"
+			wx:key="index"
 			class="{{item.month == 'current' ? '' : 'gray'}}"
 		>{{item.date}}</view>
 	</view>

@@ -11,6 +11,14 @@ Component({
 		currentMonth: { // // 当前显示的月
 			type: Number,
 			value: new Date().getMonth() + 1
+		},
+		newSportTime: {
+			type: Array,
+			value: [],
+			observer: function(newSportTime){
+				this.properties.newSportTime = newSportTime;
+				console.log("aaa",this.properties.newSportTime);
+			}
 		}
 	},
 
@@ -154,5 +162,6 @@ Component({
 			})
 			this.getAllArr()
 		}
-	}
+	},
+
 })
