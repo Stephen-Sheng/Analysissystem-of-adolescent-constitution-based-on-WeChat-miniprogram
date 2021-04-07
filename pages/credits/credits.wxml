@@ -9,7 +9,7 @@
 </view>
 <view class="middle-view">
   <view class="list">
-    <view class="list-item" wx:for="{{creditList}}">
+    <view class="list-item" wx:for="{{creditList}}" wx:key="index">
       {{item.title}}{{item.score}}
     </view>
   </view>

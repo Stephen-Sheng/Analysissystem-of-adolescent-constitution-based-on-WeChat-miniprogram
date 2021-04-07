@@ -51,7 +51,9 @@ Page({
   },
   onClickLogout: function() {
     wx.removeStorage({key:'userInfo'});
-
+    wx.removeStorage({
+      key: 'userToken',
+    })
     wx.setStorage({
       data: false,
       key: 'loginJud',
@@ -60,9 +62,9 @@ Page({
       userInfo: '',
       loginJud: false,
     })
-    // wx.redirectTo({
-    //   url: '../userLogin/userLogin',
-    // })
+    wx.redirectTo({
+      url: '../userLogin/userLogin',
+    })
 
   },
   tapFavorite: function() {
@@ -80,31 +82,9 @@ Page({
       url: '../sport/sport',
     })
   },
-  onLoad: function() {
+  onReady: function() {
     var token = wx.getStorageSync('userToken');
     var that = this;
-    console.log('token', token);
-    wx.request({
-      url: 'https://www.sunshineforce.com/app/user/jifen',
-      method: "POST",
-      data: {token},
-      success: function(res){
-        that.setData({
-          credits: res.data.data.jifen,
-          creditList: res.data.data.list
-        })
-        wx.setStorage({
-          data: that.data.credits,
-          key: 'credits',
-        })
-        wx.setStorage({
-          data: that.data.creditList,
-          key: 'creditList',
-        })
-      }
-    })
-  },
-  onReady: function() {
     var loginJud = wx.getStorageSync('loginJud');
     var userInfo = wx.getStorageSync('userInfo');
     if(userInfo && loginJud ){
@@ -112,7 +92,27 @@ Page({
         userInfo,
         loginJud,
       })
+      wx.request({
+        url: 'https://www.sunshineforce.com/app/user/jifen',
+        method: "POST",
+        data: {token},
+        success: function(res){
+          that.setData({
+            credits: res.data.data.jifen,
+            creditList: res.data.data.list
+          })
+          wx.setStorage({
+            data: that.data.credits,
+            key: 'credits',
+          })
+          wx.setStorage({
+            data: that.data.creditList,
+            key: 'creditList',
+          })
+        }
+      })
     }
+    console.log('token', token);
     
   },
 })

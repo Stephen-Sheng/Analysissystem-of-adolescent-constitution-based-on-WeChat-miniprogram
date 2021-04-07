@@ -22,12 +22,7 @@
       bindtap="onLogin"
       >点击登录</button>
     </view>
-    <button
-      wx:if="{{userInfo&&loginJud}}"
-      class= "quitBtn"
-      size="mini"
-      bindtap="onClickLogout"
-      >[退出登录]</button>
+    
   </view>
 </view>
 
@@ -42,11 +37,11 @@
     </mp-dialog>
   </view>
   <view class="item"  wx:else="{{!userInfo}}" bindtap="inClickAnalysis">
-    <mp-icon icon="eyes-on" color="black" size="{{30}}"></mp-icon>
+    <mp-icon icon="eyes-on" color="black" size="{{35}}"></mp-icon>
     <text>身体状况</text>
   </view>
   <view class="item1">
-    <mp-icon icon="note" color="black" size="{{31}}"></mp-icon>
+    <mp-icon icon="note" color="black" size="{{35}}"></mp-icon>
     <text>推荐阅读</text>
   </view>
 </view>
@@ -54,22 +49,16 @@
 <!-- 未登录 -->
 <view class="function-view" wx:if="{{!userInfo}}" bindtap="clickAnalysis">
   <mp-dialog title="提示" show="{{showAnalysisDialog}}" bindbuttontap="tapAnalysisDialogButton" buttons="{{analysisDialogText}}">
-        <view>请您登录后察看积分、优惠券及收藏</view>
+        <view>请您登录后察看</view>
     </mp-dialog>
   <view class="item">
     <view class="left">我的积分</view>
   </view>
   <view class="item">
     <view class="left">我的运动日历</view>
-    <view class="right">
-      <text>暂无可用</text>
-    </view>
   </view>
   <view class="item">
     <view class="left">我的收藏</view>
-    <view class="right">
-      <text></text>
-    </view>
   </view>
 </view>
 <!-- 已登录 -->
@@ -80,17 +69,18 @@
   </view>
   <view class="item">
     <view class="left" bindtap="tapSport">我的运动日历</view>
-    <view class="right">
-      <text>暂无可用</text>
-    </view>
   </view>
   <view class="item" bindtap="tapFavorite">
     <view class="left">我的收藏</view>
-    <view class="right">
-      <text></text>
-    </view>
   </view>
 </view>
+
+<button
+      wx:if="{{userInfo&&loginJud}}"
+      class= "quitBtn"
+      size="mini"
+      bindtap="onClickLogout"
+      >退出登录</button>
 <!-- 钱包 优惠券 结束 -->
 
 <!-- 官方微信客服开始 -->

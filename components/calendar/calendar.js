@@ -6,20 +6,20 @@ Component({
 	properties: {
 		currentYear: { // 当前显示的年
 			type: Number,
-			value: new Date().getFullYear()
+			value: 2018
+			// new Date().getFullYear()
 		},
 		currentMonth: { // // 当前显示的月
 			type: Number,
-			value: new Date().getMonth() + 1
+			value: 3
+			// new Date().getMonth() + 1
 		},
-		newSportTime: {
-			type: Array,
-			value: [],
-			observer: function(newSportTime){
-				this.properties.newSportTime = newSportTime;
-				console.log("aaa",this.properties.newSportTime);
-			}
-		}
+		// newSportTime: {
+		// 	type: Array,
+		// 	value: [],
+		// 	observer: (newSportTime) => {
+		// 	this.properties.newSportTime = newSportTime;}
+		// }
 	},
 
     /**
@@ -28,7 +28,8 @@ Component({
 	data: {
 		currentMonthDateLen: 0, // 当月天数
 		preMonthDateLen: 0, // 当月中，上月多余天数
-		allArr:[], // 当月所有数据
+		allArr:[],
+		sportDay: []
 	},
 	ready(){
 		this.getAllArr()
@@ -86,6 +87,19 @@ Component({
 						month: 'current', // 只是为了增加标识，区分上下月
 						date: i
 					})
+					if(this.data.sportDay.indexOf(i) >= 0){
+							currentMonthDateArr[i-1] = {
+								month: 'current',
+								date: i,
+								sport: true
+							}
+					}else{
+						currentMonthDateArr[i-1] = {
+							month: 'current',
+							date: i,
+							sport: false
+						}
+					}
 				}
 			}
 			this.setData({
@@ -163,5 +177,11 @@ Component({
 			this.getAllArr()
 		}
 	},
+	lifetimes:{
+		attached: function(){
+			var sportDay = wx.getStorageSync('sportDay');
+			this.setData({sportDay})
+		}
+	}
 
 })

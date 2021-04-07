@@ -1,5 +1,4 @@
 <!--pages/sport/sport.wxml-->
 <calendar
   bindsendObj='getCalendarData'
-  newSportTime= "{{newSportTime}}"
 ></calendar>

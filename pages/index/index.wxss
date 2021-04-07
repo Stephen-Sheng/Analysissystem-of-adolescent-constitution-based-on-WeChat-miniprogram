@@ -18,15 +18,23 @@
   align-items: center;
 }
 .top-view .user .avatar{
-  width: 100rpx;
-  height: 100rpx;
+  width: 150rpx;
+  height: 150rpx;
   border-radius: 50%;
 }
 .top-view .user .name{
   display: flex;
   flex-direction: row;
-  padding-left: 20rpx;
-  width: 200rpx;
+  padding-left: 40rpx;
+  
+  width: 200px;
+}
+.top-view .user .name .nickName{
+  position: relative;
+  width: 200px;
+  height: 40px;
+  top: 3px;
+  font-size: 20px;
 }
 .top-view .user .non-name{
   display: flex;
@@ -34,6 +42,7 @@
   padding-left: 10rpx;
   justify-content: space-around;
   width: 200rpx;
+
 }
 .top-view .site{
   background-color: rgba(0, 0, 0, 0.16);
@@ -54,13 +63,7 @@
   flex-direction: column;
   align-items: center;
 }
-.nickName{
-  position: relative;
-  padding-top: 0px;
-  top:0px;
-  width: 200px !important;
-  height: 10px,
-}
+
 .logBtn{
   background-color: #01ccb6;
   color: white;
@@ -68,18 +71,23 @@
   padding-left: 0rpx;
   padding-right: 30rpx;
   margin-left: 0rpx;
+  font-size: 20px !important;
+
 }
 .quitBtn{
   position: relative;
-  background-color: #01ccb6;
-  color: white;
-  top:0px;
+  background-color: #96ebe1;
+  color: black;
+  /* top:0px;
   padding: 0 !important;
   margin: 0 !important;
-  right: 50px;
-  font-weight: 300;
-  font-size: 12px !important;
-  width: 60px !important;
+  right: 50px; */
+  font-weight: 400;
+  left: 20px;
+  font-size: 16px !important;
+  width: 370px !important;
+  height: 40px;
+  line-height: 40px !important;
 }
 .middle-view{
   padding: 40rpx;
@@ -96,7 +104,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 25rpx;
+  font-size: 18px;
   border-bottom: 18rpx solid #f5f5f5;
 }
 
@@ -114,8 +122,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  right: 400rpx;
-  bottom: 3rpx;
+  right: 350rpx;
+  bottom: 10rpx;
   align-items: center;
 }
 .middle-view .item1 image{
@@ -127,7 +135,7 @@
 /*  钱包 优惠券 开始  */
 .function-view{
   padding: 40rpx;
-  font-size: 28rpx;
+  font-size: 18px;
 }
 
 .function-view .item{

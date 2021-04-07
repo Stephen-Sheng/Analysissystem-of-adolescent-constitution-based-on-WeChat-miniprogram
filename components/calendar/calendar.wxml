@@ -15,7 +15,7 @@
 		<view 
 			wx:for="{{allArr}}" 
 			wx:key="index"
-			class="{{item.month == 'current' ? '' : 'gray'}}"
+			class="{{item.month  == 'current' ? 'current' : 'gray'}} {{item.sport ? 'sport' : ''}}"
 		>{{item.date}}</view>
 	</view>
 </view>

@@ -12,6 +12,9 @@
 .calendar .tit .current{
 	margin: 0 40rpx;
 }
+.calendar .sport{
+	background-color: red;
+}
 .calendar .content{
 	display: flex;
 	flex-wrap: wrap;
