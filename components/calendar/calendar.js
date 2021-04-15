@@ -48,13 +48,13 @@ Component({
 		preMonth(year, month) { 
 			if (month == 1) {
 				return {
-					year: --year,
+					year: -- year,
 					month: 12
 				}
 			} else {
 				return {
 					year: year,
-					month: --month
+					month: -- month
 				}
 			}
 		},
@@ -62,19 +62,19 @@ Component({
 		nextMonth(year, month) { 
 			if (month == 12) {
 				return {
-					year: ++year,
+					year: ++ year,
 					month: 1
 				}
 			} else {
 				return {
 					year: year,
-					month: ++month
+					month: ++ month
 				}
 			}
 		},
 		// 获取当月数据，返回数组
 		getCurrentArr(){
-			var sportDay = wx.getStorageSync('sportDay');
+			let sportDay = wx.getStorageSync('sportDay');
 			this.setData({sportDay});
 			let currentMonthDateLen = this.getDateLen(this.data.currentYear, this.data.currentMonth) // 获取当月天数
 			let currentMonthDateArr = [] // 定义空数组
@@ -140,26 +140,19 @@ Component({
 		},
 		// 整合当月所有数据
 		getAllArr(){ 
-			var sportDay = wx.getStorageSync('sportDay');
-			console.log('222');
-			console.log(sportDay);
-			console.log('222');
+			let sportDay = wx.getStorageSync('sportDay');
 			this.setData({sportDay},()=>{
 				let preArr = this.getPreArr()
-			let currentArr = this.getCurrentArr()
-			let nextArr = this.getNextArr()
-			let allArr = [...preArr, ...currentArr, ...nextArr]
-			
-			this.setData({
-				allArr
-			})
-			let sendObj = {
-				currentYear: this.data.currentYear,
-				currentMonth: this.data.currentMonth,
-				allArr: allArr
-			}
-			// console.log(sendObj)
-			this.triggerEvent('sendObj', sendObj)
+				let currentArr = this.getCurrentArr()
+				let nextArr = this.getNextArr()
+				let allArr = [...preArr, ...currentArr, ...nextArr]
+				this.setData({allArr});
+				let sendObj = {
+					currentYear: this.data.currentYear,
+					currentMonth: this.data.currentMonth,
+					allArr: allArr
+				}
+				this.triggerEvent('sendObj', sendObj)
 			})
 			
 		},
@@ -173,8 +166,7 @@ Component({
 			this.getAllArr()
 		},
 		// 点击 下月
-		gotoNextMonth() { 
-			
+		gotoNextMonth() { 		
 			let { year, month } = this.nextMonth(this.data.currentYear, this.data.currentMonth)
 			this.setData({
 				currentYear: year,
@@ -182,20 +174,21 @@ Component({
 			})
 			this.getAllArr()
 		},
-
+		// 组件重新渲染
 		freshData(){
-			this.getAllArr();
+			let sportDay = wx.getStorageSync('sportDay');
+			this.setData({sportDay},()=>{
+				let preArr = this.getPreArr()
+				let currentArr = this.getCurrentArr()
+				let nextArr = this.getNextArr()
+				let allArr = [...preArr, ...currentArr, ...nextArr]
+				this.setData({allArr})
+		})
 		}
 	},
 	lifetimes:{
 		attached: function(){
-
-			var sportDay = wx.getStorageSync('sportDay');
-			console.log(sportDay);
-			this.setData({sportDay},()=>{
-				this.getAllArr();
-			})
-			
+			this.getAllArr();
 		}
 	}
 
