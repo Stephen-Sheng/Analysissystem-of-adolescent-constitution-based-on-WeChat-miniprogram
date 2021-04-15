@@ -32,12 +32,12 @@ bannerChange: function(e){
 
 
   imgH:function(e){
-    var winWid = wx.getSystemInfoSync().windowWidth;         //获取当前屏幕的宽度
-    var imgh=e.detail.height;　　　　　　　　　　　　　　　　//图片高度
+    var winWid = wx.getSystemInfoSync().windowWidth;//获取当前屏幕的宽度
+    var imgh=e.detail.height;//图片高度
     var imgw=e.detail.width;
-    var swiperH=winWid*imgh/imgw + "px"　　　　　　　　　　//等比设置swiper的高度。  即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度    ==》swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
+    var swiperH=winWid*imgh/imgw + "px"//等比设置swiper的高度。即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度    ==》swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
     this.setData({
-        Hei:swiperH　　　　　　　　//设置高度
+        Hei:swiperH//设置高度
     })
 },
 

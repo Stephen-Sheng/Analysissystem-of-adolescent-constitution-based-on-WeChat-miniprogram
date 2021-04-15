@@ -123,7 +123,7 @@
   flex-direction: column;
   position: relative;
   right: 350rpx;
-  bottom: 10rpx;
+  bottom: 1rpx;
   align-items: center;
 }
 .middle-view .item1 image{

@@ -1,4 +1,14 @@
 <!--pages/sport/sport.wxml-->
-<calendar
+<view>
+  <calendar
   bindsendObj='getCalendarData'
-></calendar>
+  id="calendar_1"
+  ></calendar>
+</view>
+
+
+
+
+
+
+

@@ -1,15 +1,33 @@
 <!--pages/advertise.wxml-->
 <view>
   <view class="lb_swiper">
-    <swiper style='height:{{Hei}};position:relative' indicator-dots="true" circular="true"
-     current="{{bannerCurrent}}" bindchange="bannerChange"
-      autoplay="true" interval="{{interval}}" duration="{{duration}}">
+    <swiper 
+    style='height:{{Hei}};position:relative' 
+    indicator-dots="true" 
+    circular="true"
+    current="{{bannerCurrent}}" 
+    bindchange="bannerChange"
+    autoplay="true" 
+    interval="{{interval}}" 
+    duration="{{duration}}"
+    >
       <block wx:for="{{background}}" wx:key="*this">
         <swiper-item>
-          <image mode="aspectFill" bindload='imgH' src="{{item.url}}" class="slide-image {{bannerCurrent==index?'slide-active':''}}" style="transition: all 1s"></image>
+          <image 
+          mode="aspectFill" 
+          bindload='imgH' 
+          src="{{item.url}}" 
+          class="slide-image {{bannerCurrent==index?'slide-active':''}}" 
+          style="transition: all 1s">
+          </image>
         </swiper-item>
       </block>
     </swiper>
   </view>
 </view>
-<mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange" current="0"></mp-tabbar>
+<mp-tabbar 
+  style="position:fixed;bottom:0;width:100%;left:0;right:0;" 
+  list="{{list}}" 
+  bindchange="tabChange" 
+  current="0">
+</mp-tabbar>

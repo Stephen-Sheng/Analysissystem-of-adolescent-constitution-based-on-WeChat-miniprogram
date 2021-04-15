@@ -14,12 +14,6 @@ Component({
 			value: 3
 			// new Date().getMonth() + 1
 		},
-		// newSportTime: {
-		// 	type: Array,
-		// 	value: [],
-		// 	observer: (newSportTime) => {
-		// 	this.properties.newSportTime = newSportTime;}
-		// }
 	},
 
     /**
@@ -32,7 +26,8 @@ Component({
 		sportDay: []
 	},
 	ready(){
-		this.getAllArr()
+		console.log();
+		
 	},
 
     /**
@@ -78,7 +73,9 @@ Component({
 			}
 		},
 		// 获取当月数据，返回数组
-		getCurrentArr(){ 
+		getCurrentArr(){
+			var sportDay = wx.getStorageSync('sportDay');
+			this.setData({sportDay});
 			let currentMonthDateLen = this.getDateLen(this.data.currentYear, this.data.currentMonth) // 获取当月天数
 			let currentMonthDateArr = [] // 定义空数组
 			if (currentMonthDateLen > 0) {
@@ -143,10 +140,16 @@ Component({
 		},
 		// 整合当月所有数据
 		getAllArr(){ 
-			let preArr = this.getPreArr()
+			var sportDay = wx.getStorageSync('sportDay');
+			console.log('222');
+			console.log(sportDay);
+			console.log('222');
+			this.setData({sportDay},()=>{
+				let preArr = this.getPreArr()
 			let currentArr = this.getCurrentArr()
 			let nextArr = this.getNextArr()
 			let allArr = [...preArr, ...currentArr, ...nextArr]
+			
 			this.setData({
 				allArr
 			})
@@ -157,6 +160,8 @@ Component({
 			}
 			// console.log(sendObj)
 			this.triggerEvent('sendObj', sendObj)
+			})
+			
 		},
 		// 点击 上月
 		gotoPreMonth(){ 
@@ -169,18 +174,28 @@ Component({
 		},
 		// 点击 下月
 		gotoNextMonth() { 
+			
 			let { year, month } = this.nextMonth(this.data.currentYear, this.data.currentMonth)
 			this.setData({
 				currentYear: year,
 				currentMonth: month
 			})
 			this.getAllArr()
+		},
+
+		freshData(){
+			this.getAllArr();
 		}
 	},
 	lifetimes:{
 		attached: function(){
+
 			var sportDay = wx.getStorageSync('sportDay');
-			this.setData({sportDay})
+			console.log(sportDay);
+			this.setData({sportDay},()=>{
+				this.getAllArr();
+			})
+			
 		}
 	}
 

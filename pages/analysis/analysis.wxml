@@ -3,3 +3,4 @@
 <view>
 <web-view src= "{{finalURL}}" binderror="failHandler"></web-view>
 </view>
+
